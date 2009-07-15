@@ -1,3 +1,9 @@
+//Intro to Game Programming Lecture 1
+//The following code can be found on my TJ Page here:
+//http://www.tjhsst.edu/~2010djohnson/GameTemplate.java
+//It's a good idea to start with this code for your first few games.
+//Original template by Eugene Paik for TJGames.org
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
