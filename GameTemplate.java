@@ -32,11 +32,32 @@ public class GameTemplate extends JPanel {
 		/*
 		 * Game Logic goes here
 		 */
+
+
+
+
+
+
+
+
+
+
 	}
 
 	public void roomDraw() {
 		buffer.setColor(Color.black);
 		buffer.fillRect(0,0,WINDOWX,WINDOWY);
+		
+
+
+
+
+
+
+
+
+
+
 		//buffer.setColor(Color.blue);
 		//buffer.fillRect(100,100,200,100);
 		//buffer.setColor(Color.red);
