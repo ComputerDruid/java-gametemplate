@@ -21,6 +21,9 @@ public class GameTemplate extends JPanel {
 	//#The dimensions of your game.  Will be called upon later a lot.
 	final int LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3, SPACE = 4;
 	boolean[] keys = new boolean[5];
+	int playerx = 0;
+	int playery = 0;
+	Item i = new Item(0, 0, 100, 100);
 
 	public GameTemplate() {
 		myImage = new BufferedImage(WINDOWX, WINDOWY, BufferedImage.TYPE_INT_RGB);
@@ -35,43 +38,22 @@ public class GameTemplate extends JPanel {
 		t.start();
 	}
 	public void roomMath() {
-		/*
-		 * Game Logic goes here
-		 */
-
-
-
-
-
-
-
-
-
-
+		if(keys[LEFT]) i.setX(i.getX()-2);
+		if(keys[RIGHT]) i.setX(i.getX()+2);
+		if(keys[UP]) i.setY(i.getY()-2);
+		if(keys[DOWN]) i.setY(i.getY()+2);
+		// does all the actions of the objects
 	}
 
 	public void roomDraw() {
 		buffer.setColor(Color.black);
 		buffer.fillRect(0,0,WINDOWX,WINDOWY);
-		
+		// redraws the background
 
+		buffer.drawImage(i.getImage(), i.getX(), i.getY(), i.getWidth(), i.getHeight(), null);
+		// does all the drawing for all the objects
 
-
-
-
-
-
-
-
-
-		//buffer.setColor(Color.blue);
-		//buffer.fillRect(100,100,200,100);
-		//buffer.setColor(Color.red);
-		//buffer.fillOval(300,300,100,200);
-		//buffer.setColor(Color.white);
-		//buffer.drawString("Hello world!", 50, 400);
-		//buffer.fillOval(playerx,playery,50,50);
-		repaint();
+		repaint(); // displays on the screen
 	}
 
 	private class Listener implements ActionListener {
