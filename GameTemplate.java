@@ -24,6 +24,7 @@ public class GameTemplate extends JPanel {
 	int playerx = 0;
 	int playery = 0;
 	Item i = new Item(0, 0, 100, 100);
+	Platform p = new Platform(100, 500, 400, 100, Color.red);
 
 	public GameTemplate() {
 		myImage = new BufferedImage(WINDOWX, WINDOWY, BufferedImage.TYPE_INT_RGB);
@@ -38,10 +39,13 @@ public class GameTemplate extends JPanel {
 		t.start();
 	}
 	public void roomMath() {
-		if(keys[LEFT]) i.setX(i.getX()-2);
-		if(keys[RIGHT]) i.setX(i.getX()+2);
-		if(keys[UP]) i.setY(i.getY()-2);
-		if(keys[DOWN]) i.setY(i.getY()+2);
+		int dx = 0;
+		int dy = 0;
+		if(keys[LEFT]) dx -= 5;
+		if(keys[RIGHT]) dx += 5;
+		if(keys[UP]) dy -= 5;
+		if(keys[DOWN]) dy += 5;
+		i.move(dx, dy);
 		// does all the actions of the objects
 	}
 
@@ -50,7 +54,8 @@ public class GameTemplate extends JPanel {
 		buffer.fillRect(0,0,WINDOWX,WINDOWY);
 		// redraws the background
 
-		buffer.drawImage(i.getImage(), i.getX(), i.getY(), i.getWidth(), i.getHeight(), null);
+		i.redraw(buffer);
+		p.redraw(buffer);	
 		// does all the drawing for all the objects
 
 		repaint(); // displays on the screen
