@@ -41,6 +41,8 @@ public class GameTemplate extends JPanel {
 	public void roomMath() {
 		i.move(keys);
 		// does all the actions of the object
+		
+		if(i.bullet != null) i.bullet.move();
 	}
 
 	public void roomDraw() {
@@ -51,7 +53,8 @@ public class GameTemplate extends JPanel {
 		p.collide(i);
 
 		i.redraw(buffer);
-		p.redraw(buffer);	
+		p.redraw(buffer);
+		if(i.bullet != null) i.bullet.redraw(buffer);
 		// does all the drawing for all the objects
 
 		repaint(); // displays on the screen

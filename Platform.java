@@ -2,22 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Platform {
-	int xpos, ypos, width, height;
+	int x, y, width, height;
 	Color color;
-	public Platform(int x, int y, int w, int h, Color c) {
-		xpos = x;
-		ypos = y;
+	public Platform(int xpos, int ypos, int w, int h, Color c) {
+		x = xpos;
+		y = ypos;
 		width = w;
 		height = h;
 		color = c;
 	}
 	public void redraw(Graphics2D g) {
 		g.setColor(color);
-		g.fillRect(xpos, ypos, width, height);
+		g.fillRect(x, y, width, height);
 	}
 	public void collide(Item i) {
-		while(i.ypos+i.height > ypos && i.xpos < xpos+width && i.xpos+i.width > xpos){
-			i.ypos--;
+		while(i.y+i.height > y && i.x < x+width && i.x+i.width > x){
+			i.y--;
 			i.dy=0;
 			i.jumpstaken=0;
 		}

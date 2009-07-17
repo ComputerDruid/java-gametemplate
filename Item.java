@@ -3,33 +3,30 @@ import java.awt.*;
 
 public class Item {
 	final int LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3, SPACE = 4;
-	int xpos, ypos, width, height;
+	int x, y, width, height;
 	int dx, dy;
-	ImageIcon icon;
-	Image image;
+	ImageIcon icon = new ImageIcon("Images/Pikachu.png");;
+	Image image = icon.getImage();
 	int gravity = 1;
 	int jumpstaken=0;
 	static final int TERMINALVELOCITY = 25;
-	public Item(int x, int y, int w, int h) {
-		xpos = x;
-		ypos = y;
+	Bullet bullet = null;
+	public Item(int xpos, int ypos, int w, int h) {
+		x = xpos;
+		y = ypos;
 		width = w;
 		height = h;
-		icon = new ImageIcon("Images/Pikachu.png");
-		image = icon.getImage();
 	}
 	public void move(boolean[] keys) {
-		System.out.println("1DY: "+dy);
-		if(keys[LEFT]) xpos -= 5;
-		if(keys[RIGHT]) xpos += 5;
-		if(keys[DOWN]) ypos += 5;
-		System.out.println("2DY: "+dy);
+		if(keys[LEFT]) x -= 5;
+		if(keys[RIGHT]) x += 5;
+		if(keys[DOWN]) y += 5;
 		dy+= gravity;
 		if (dy > TERMINALVELOCITY)
 			dy = TERMINALVELOCITY;
-		System.out.println("3DY: "+dy);
-		ypos += dy;
-		xpos += dx;
+		y += dy;
+		x += dx;
+		if(keys[SPACE]) bullet = new Bullet(x+50, y+50, 10, 0);
 	}
 	public void jump(){
 		if (jumpstaken<2) {
@@ -38,6 +35,6 @@ public class Item {
 		}
 	}
 	public void redraw(Graphics2D g) {
-		g.drawImage(image, xpos, ypos, width, height, null);	
+		g.drawImage(image, x, y, width, height, null);	
 	}
 }
