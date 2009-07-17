@@ -20,13 +20,14 @@ public class Item {
 	public void move(boolean[] keys) {
 		if(keys[LEFT]) x -= 5;
 		if(keys[RIGHT]) x += 5;
-		if(keys[DOWN]) y += 5;
-		dy+= gravity;
-		if (dy > TERMINALVELOCITY)
-			dy = TERMINALVELOCITY;
+		dy += gravity;
+		if (dy > TERMINALVELOCITY) dy = TERMINALVELOCITY;
 		y += dy;
 		x += dx;
-		if(keys[SPACE]) bullet = new Bullet(x+50, y+50, 10, 0);
+		if(keys[SPACE]) {
+			if(keys[RIGHT]) bullet = new Bullet(x+100, y+50, 20, 0);
+			else bullet = new Bullet(x, y+50, -20, 0);
+		}
 	}
 	public void jump(){
 		if (jumpstaken<2) {

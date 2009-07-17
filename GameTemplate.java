@@ -119,7 +119,7 @@ public class GameTemplate extends JPanel {
 		//This method sets up everything, including the panel, which will do the rest of the work.
 
 		JFrame frame = new JFrame("Game");
-		frame.setLocationRelativeTo(null); //Centers the window onscreen
+		frame.setLocation(0, 0); //Centers the window onscreen
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false); //keeps the window size from changing
 		frame.setContentPane(new GameTemplate());
