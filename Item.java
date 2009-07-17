@@ -5,8 +5,6 @@ public class Item {
 	final int LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3, SPACE = 4;
 	int xpos, ypos, width, height;
 	int dx, dy;
-	ImageIcon icon;
-	Image image;
 	int gravity = 1;
 	int jumpstaken=0;
 	static final int TERMINALVELOCITY = 25;
@@ -15,8 +13,6 @@ public class Item {
 		ypos = y;
 		width = w;
 		height = h;
-		icon = new ImageIcon("Images/Pikachu.png");
-		image = icon.getImage();
 	}
 	public void move(boolean[] keys) {
 		if(keys[LEFT]) xpos -= 5;
@@ -35,6 +31,7 @@ public class Item {
 		}
 	}
 	public void redraw(Graphics2D g) {
-		g.drawImage(image, xpos, ypos, width, height, null);	
+		g.setColor(Color.blue);
+		g.fillRect(xpos, ypos, width, height);
 	}
 }
