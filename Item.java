@@ -35,6 +35,7 @@ public class Item {
 		}
 	}
 	public void redraw(Graphics2D g) {
-		g.drawImage(image, x, y, width, height, null);	
+		g.setColor(Color.blue);
+		g.fillRect(x, y, width, height);
 	}
 }
