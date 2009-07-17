@@ -16,6 +16,10 @@ public class Platform {
 		g.fillRect(xpos, ypos, width, height);
 	}
 	public void collide(Item i) {
-		while(i.ypos+i.height > ypos && i.xpos < xpos+width && i.xpos+i.width > xpos) i.ypos--;
+		while(i.ypos+i.height > ypos && i.xpos < xpos+width && i.xpos+i.width > xpos){
+			i.ypos--;
+			i.dy=0;
+			i.jumpstaken=0;
+		}
 	}
 }

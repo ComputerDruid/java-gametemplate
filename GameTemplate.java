@@ -73,6 +73,8 @@ public class GameTemplate extends JPanel {
 				keys[RIGHT] = true;
 			}
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				if (!keys[UP])
+					i.jump();
 				keys[UP] = true;
 			}
 			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
