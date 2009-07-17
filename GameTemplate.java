@@ -23,6 +23,7 @@ public class GameTemplate extends JPanel {
 	boolean[] keys = new boolean[5];
 	int playerx = 0;
 	int playery = 0;
+	int counter=0;
 	Item i = new Item(300, 0, 100, 100);
 	Enemy e = new Enemy();
 	Platform p = new Platform(0, 500, 600, 100, Color.red);
@@ -44,7 +45,14 @@ public class GameTemplate extends JPanel {
 		e.move(keys);
 		// does all the actions of the object
 		
-		if(i.bullet != null) i.bullet.move();
+		if(i.bullet != null) {
+			i.bullet.move();
+			if(i.bullet.check(e)){
+				i.bullet=null;
+				e.die();
+				counter++;
+			}
+		}
 		p.collide(i);
 		p.collide(e);
 	}
@@ -53,6 +61,8 @@ public class GameTemplate extends JPanel {
 		buffer.setColor(Color.black);
 		buffer.fillRect(0,0,WINDOWX,WINDOWY);
 		// redraws the background
+		buffer.setColor(Color.blue);
+		buffer.drawString("Score: "+counter,10,50);
 
 		if(i.bullet != null) i.bullet.redraw(buffer);
 		i.redraw(buffer);
