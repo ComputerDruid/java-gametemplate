@@ -19,15 +19,12 @@ public class Item {
 		image = icon.getImage();
 	}
 	public void move(boolean[] keys) {
-		System.out.println("1DY: "+dy);
 		if(keys[LEFT]) xpos -= 5;
 		if(keys[RIGHT]) xpos += 5;
 		if(keys[DOWN]) ypos += 5;
-		System.out.println("2DY: "+dy);
 		dy+= gravity;
 		if (dy > TERMINALVELOCITY)
 			dy = TERMINALVELOCITY;
-		System.out.println("3DY: "+dy);
 		ypos += dy;
 		xpos += dx;
 	}
