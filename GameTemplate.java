@@ -54,6 +54,8 @@ public class GameTemplate extends JPanel {
 		buffer.fillRect(0,0,WINDOWX,WINDOWY);
 		// redraws the background
 
+		p.collide(i);
+
 		i.redraw(buffer);
 		p.redraw(buffer);	
 		// does all the drawing for all the objects

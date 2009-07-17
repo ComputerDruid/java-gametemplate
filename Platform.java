@@ -15,4 +15,7 @@ public class Platform {
 		g.setColor(color);
 		g.fillRect(xpos, ypos, width, height);
 	}
+	public void collide(Item i) {
+		while(i.ypos+i.height > ypos && i.xpos < xpos+width && i.xpos+i.width > xpos) i.ypos--;
+	}
 }
