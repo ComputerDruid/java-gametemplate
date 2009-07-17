@@ -24,7 +24,7 @@ public class GameTemplate extends JPanel {
 	int playerx = 0;
 	int playery = 0;
 	Item i = new Item(0, 0, 100, 100);
-	Platform p = new Platform(100, 500, 400, 100, Color.red);
+	Platform p = new Platform(0, 500, 600, 100, Color.red);
 
 	public GameTemplate() {
 		myImage = new BufferedImage(WINDOWX, WINDOWY, BufferedImage.TYPE_INT_RGB);
@@ -39,14 +39,8 @@ public class GameTemplate extends JPanel {
 		t.start();
 	}
 	public void roomMath() {
-		int dx = 0;
-		int dy = 0;
-		if(keys[LEFT]) dx -= 5;
-		if(keys[RIGHT]) dx += 5;
-		if(keys[UP]) dy -= 5;
-		if(keys[DOWN]) dy += 5;
-		i.move(dx, dy);
-		// does all the actions of the objects
+		i.move(keys);
+		// does all the actions of the object
 	}
 
 	public void roomDraw() {
