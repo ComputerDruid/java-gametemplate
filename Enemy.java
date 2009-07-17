@@ -8,10 +8,14 @@ public class Enemy extends Item {
 		dx=5;
 		super.move(new boolean[] {false,false,false,false,false,false,false});
 		if (x>600)
-			x=0;
+			die();
 	}
 	public void redraw(Graphics2D g) {
 		g.setColor(Color.yellow);
 		g.fillRect(x, y, width, height);
+	}
+	public void die(){
+		x=0;
+		
 	}
 }
