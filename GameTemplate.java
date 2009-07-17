@@ -23,7 +23,8 @@ public class GameTemplate extends JPanel {
 	boolean[] keys = new boolean[5];
 	int playerx = 0;
 	int playery = 0;
-	Item i = new Item(0, 0, 100, 100);
+	Item i = new Item(300, 0, 100, 100);
+	Enemy e = new Enemy();
 	Platform p = new Platform(0, 500, 600, 100, Color.red);
 
 	public GameTemplate() {
@@ -40,7 +41,10 @@ public class GameTemplate extends JPanel {
 	}
 	public void roomMath() {
 		i.move(keys);
+		e.move(keys);
 		// does all the actions of the object
+		p.collide(i);
+		p.collide(e);
 	}
 
 	public void roomDraw() {
@@ -48,9 +52,9 @@ public class GameTemplate extends JPanel {
 		buffer.fillRect(0,0,WINDOWX,WINDOWY);
 		// redraws the background
 
-		p.collide(i);
 
 		i.redraw(buffer);
+		e.redraw(buffer);
 		p.redraw(buffer);	
 		// does all the drawing for all the objects
 
