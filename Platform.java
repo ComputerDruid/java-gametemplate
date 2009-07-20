@@ -16,10 +16,10 @@ public class Platform {
 		g.fillRect(x, y, width, height);
 	}
 	public void collide(Item i) {
-		while(i.y+i.height > y && i.x < x+width && i.x+i.width > x){
+		while (i.y + i.height > y && i.x < x + width && i.x + i.width > x) {
 			i.y--;
-			i.dy=0;
-			i.jumpstaken=0;
+			i.dy = 0;
+			i.jumpstaken = 0;
 		}
 	}
 }

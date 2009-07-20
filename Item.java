@@ -5,10 +5,8 @@ public class Item {
 	final int LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3, SPACE = 4;
 	int x, y, width, height;
 	int dx, dy;
-	ImageIcon icon = new ImageIcon("Images/Pikachu.png");;
-	Image image = icon.getImage();
 	int gravity = 1;
-	int jumpstaken=0;
+	int jumpstaken = 0;
 	static final int TERMINALVELOCITY = 25;
 	Bullet bullet = null;
 	public Item(int xpos, int ypos, int w, int h) {
@@ -18,20 +16,24 @@ public class Item {
 		height = h;
 	}
 	public void move(boolean[] keys) {
-		if(keys[LEFT]) x -= 5;
-		if(keys[RIGHT]) x += 5;
+		if (keys[LEFT]) x -= 5;
+		if (keys[RIGHT]) x += 5;
 		dy += gravity;
 		if (dy > TERMINALVELOCITY) dy = TERMINALVELOCITY;
 		y += dy;
 		x += dx;
-		if(keys[SPACE]) {
-			if(keys[RIGHT]) bullet = new Bullet(x+100, y+50, 20, 0);
-			else bullet = new Bullet(x, y+50, -20, 0);
+		if (keys[SPACE]) {
+			fire(keys[RIGHT]);
 		}
 	}
-	public void jump(){
-		if (jumpstaken<2) {
-			dy= -15;
+	public void fire(boolean right) {
+		System.out.println(this + " fire");
+		if (right) bullet = new Bullet(x + 100, y + 50, 20, 0);
+		else bullet = new Bullet(x, y + 50, -20, 0);
+	}
+	public void jump() {
+		if (jumpstaken < 2) {
+			dy = -15;
 			jumpstaken++;
 		}
 	}

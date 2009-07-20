@@ -23,7 +23,7 @@ public class GameTemplate extends JPanel {
 	boolean[] keys = new boolean[5];
 	int playerx = 0;
 	int playery = 0;
-	int counter=0;
+	int counter = 0;
 	Item i = new Item(300, 0, 100, 100);
 	Enemy e = new Enemy();
 	Platform p = new Platform(0, 500, 600, 100, Color.red);
@@ -44,13 +44,20 @@ public class GameTemplate extends JPanel {
 		i.move(keys);
 		e.move(keys);
 		// does all the actions of the object
-		
-		if(i.bullet != null) {
+
+		if (i.bullet != null) {
 			i.bullet.move();
-			if(i.bullet.check(e)){
-				i.bullet=null;
+			if (i.bullet.check(e)) {
+				i.bullet = null;
 				e.die();
 				counter++;
+			}
+		}
+		if (e.bullet != null) {
+			e.bullet.move();
+			if (e.bullet.check(i)) {
+				e.bullet = null;
+				System.exit(0);
 			}
 		}
 		p.collide(i);
@@ -59,12 +66,13 @@ public class GameTemplate extends JPanel {
 
 	public void roomDraw() {
 		buffer.setColor(Color.black);
-		buffer.fillRect(0,0,WINDOWX,WINDOWY);
+		buffer.fillRect(0, 0, WINDOWX, WINDOWY);
 		// redraws the background
-		buffer.setColor(Color.blue);
-		buffer.drawString("Score: "+counter,10,50);
+		buffer.setColor(Color.yellow);
+		buffer.drawString("Score: " + counter, 10, 50);
 
-		if(i.bullet != null) i.bullet.redraw(buffer);
+		if (i.bullet != null) i.bullet.redraw(buffer);
+		if (e.bullet != null) e.bullet.redraw(buffer);
 		i.redraw(buffer);
 		e.redraw(buffer);
 		p.redraw(buffer);

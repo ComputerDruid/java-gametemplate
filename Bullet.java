@@ -12,15 +12,15 @@ public class Bullet {
 	}
 	public void move() {
 		x += dx;
-		y += dy;	
+		y += dy;
 	}
 	public void redraw(Graphics2D g) {
 		g.setColor(Color.white);
 		g.fillOval(x, y, size, size);
 	}
-	public boolean check(Item i){
-		if (x>= i.x && x<= i.x+i.width)
-			if (y>= i.y && y<= i.y+i.height)
+	public boolean check(Item i) {
+		if (x >= i.x && x <= i.x + i.width)
+			if (y >= i.y && y <= i.y + i.height)
 				return true;
 		return false;
 	}
