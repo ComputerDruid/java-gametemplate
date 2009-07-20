@@ -27,9 +27,8 @@ public class Item {
 		}
 	}
 	public void fire(boolean right) {
-		System.out.println(this + " fire");
-		if (right) bullet = new Bullet(x + 100, y + 50, 20, 0);
-		else bullet = new Bullet(x, y + 50, -20, 0);
+		if (right) bullet = new Bullet(x + width, y + height / 2, 20, 0);
+		else bullet = new Bullet(x, y + height / 2, -20, 0);
 	}
 	public void jump() {
 		if (jumpstaken < 2) {
